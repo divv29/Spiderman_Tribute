@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peter Parker | Spider-Man Tribute</title>
+    <style>
+        /* CSS Variables for Color Palette */
+        :root {
+            --spider-red: #e62429;
+            --spider-blue: #235789;
+            --spider-light: #f5f5f5;
+            --spider-dark: #1a1a1a;
+            --spider-accent: #f9cb40;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--spider-light);
+            color: var(--spider-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Bahnschrift', 'Arial Narrow', Arial, sans-serif;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, var(--spider-red), var(--spider-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--spider-red);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: var(--spider-blue);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        /* Header/Hero Section */
+        header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/hero.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            opacity: 0.9;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(230, 36, 41, 0.7) 0%, rgba(35, 87, 137, 0.7) 100%);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: rgba(26, 26, 26, 0.9);
+            padding: 1rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--spider-red);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--spider-red);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--spider-red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover {
+            transform: scale(1.02);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Key Moments Section */
+        .moments {
+            background-color: var(--spider-light);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--spider-blue);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--spider-red);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::after {
+            right: -10px;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-content h3 {
+            color: var(--spider-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background-color: white;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 4/3;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Quotes Section */
+        .quotes {
+            background-color: var(--spider-light);
+            text-align: center;
+        }
+
+        .quote-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quote-slide {
+            display: none;
+            padding: 2rem;
+        }
+
+        .quote-slide.active {
+            display: block;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--spider-dark);
+            position: relative;
+        }
+
+        .quote-text::before,
+        .quote-text::after {
+            content: '"';
+            color: var(--spider-red);
+            font-size: 2rem;
+        }
+
+        .quote-author {
+            font-weight: 700;
+            color: var(--spider-blue);
+        }
+
+        .quote-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .quote-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .quote-dot.active {
+            background-color: var(--spider-red);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--spider-dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: var(--spider-red);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--spider-red);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--spider-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+            }
+
+            .left::after,
+            .right::after {
+                left: 21px;
+            }
+
+            .right {
+                left: 0;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Spider<span>Man</span></a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#moments">Key Moments</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#quotes">Quotes</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header>
+        <div class="hero-image"></div>
+        <div class="hero-content">
+            <h1>Peter Parker</h1>
+            <p class="subtitle">The Friendly Neighborhood Spider-Man</p>
+            <a href="#about" class="btn">Explore</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Peter Parker</h2>
+            <div class="about-content">
+                <div>
+                    <p>Peter Parker, portrayed by Tom Holland in the Marvel Cinematic Universe, is a high school student who gains spider-like abilities after being bitten by a radioactive spider.</p>
+                    <p>As Spider-Man, Peter struggles to balance his life as a superhero with his responsibilities as a teenager, all while learning what it truly means to be a hero under the mentorship of Tony Stark.</p>
+                    <p>Throughout his journey in the MCU, Peter evolves from an eager young hero to someone who understands that "with great power comes great responsibility."</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/about.jpg" alt="Peter Parker as Spider-Man">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Moments Section -->
+    <section id="moments" class="moments">
+        <div class="container">
+            <h2>Key Moments in the MCU</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>2016 - Civil War</h3>
+                        <p>Peter is recruited by Tony Stark to help in the conflict between the Avengers. He makes his first appearance as Spider-Man, impressing everyone with his abilities.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>2017 - Homecoming</h3>
+                        <p>Peter tries to prove himself as more than just a "friendly neighborhood Spider-Man" while dealing with the Vulture and high school life.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>2018 - Infinity War</h3>
+                        <p>Peter joins the fight against Thanos on Titan. He is one of the victims of the Snap, disappearing in Tony Stark's arms.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>2019 - Endgame</h3>
+                        <p>Peter returns after the Blip and participates in the final battle against Thanos. He shares an emotional reunion with Tony Stark.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>2019 - Far From Home</h3>
+                        <p>Peter deals with the loss of Tony Stark while on a school trip to Europe, where he faces Mysterio and is framed for his murder.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>2021 - No Way Home</h3>
+                        <p>After his identity is revealed to the world, Peter seeks Doctor Strange's help, leading to a multiversal conflict with past Spider-Man villains.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Gallery</h2>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="images/gallery1.jpg" alt="Spider-Man in action">
+                    <div class="gallery-caption">Spider-Man swinging through New York</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery2.jpg" alt="Spider-Man mask">
+                    <div class="gallery-caption">The iconic Spider-Man mask</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery3.jpg" alt="Spider-Man with Iron Man">
+                    <div class="gallery-caption">Spider-Man with mentor Tony Stark</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery4.jpg" alt="Spider-Man with MJ">
+                    <div class="gallery-caption">Peter with his love interest MJ</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery5.jpg" alt="Spider-Man fighting">
+                    <div class="gallery-caption">Spider-Man in combat</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery6.jpg" alt="Spider-Man with Avengers">
+                    <div class="gallery-caption">With other Avengers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quotes Section -->
+    <section id="quotes" class="quotes">
+        <div class="container">
+            <h2>Iconic Quotes</h2>
+            <div class="quote-container">
+                <div class="quote-slide active">
+                    <p class="quote-text">When you can do the things that I can, but you don't, and then the bad things happen, they happen because of you.</p>
+                    <p class="quote-author">— Peter Parker, Captain America: Civil War</p>
+                </div>
+                <div class="quote-slide">
+                    <p class="quote-text">If you're nothing without this suit, then you shouldn't have it.</p>
+                    <p class="quote-author">— Tony Stark to Peter Parker, Spider-Man: Homecoming</p>
+                </div>
+                <div class="quote-slide">
+                    <p class="quote-text">I'm sorry, I don't want to go... I don't want to go, sir, please. Please, I don't want to go. I don't want to go...</p>
+                    <p class="quote-author">— Peter Parker, Avengers: Infinity War</p>
+                </div>
+                <div class="quote-slide">
+                    <p class="quote-text">You can't trick me anymore. I see through your tricks. I see through everything!</p>
+                    <p class="quote-author">— Peter Parker, Spider-Man: No Way Home</p>
+                </div>
+                <div class="quote-nav">
+                    <span class="quote-dot active" onclick="currentSlide(1)"></span>
+                    <span class="quote-dot" onclick="currentSlide(2)"></span>
+                    <span class="quote-dot" onclick="currentSlide(3)"></span>
+                    <span class="quote-dot" onclick="currentSlide(4)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>Peter Parker | Spider-Man</h3>
+                <p>The Friendly Neighborhood Hero</p>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">YouTube</a>
+                </div>
+                <p class="copyright">© 2023 Spider-Man Tribute. All Marvel characters and related indicia are © of Marvel Entertainment, LLC.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Quote Slider
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("quote-slide");
+            let dots = document.getElementsByClassName("quote-dot");
+            
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            slides[slideIndex-1].classList.add("active");
+            dots[slideIndex-1].classList.add("active");
+        }
+
+        // Auto-advance quotes
+        setInterval(function() {
+            plusSlides(1);
+        }, 5000);
+    </script>
+</body>
+</html>
